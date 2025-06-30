@@ -19,5 +19,5 @@ jobs:
       run: echo "PYTHONPATH"=$GITHUB_WORKSPACE >> $GITHUB_ENV
     - name: python link
       run: flake8 app.py tests/
-    - name: Run tests/
+    - name: Run tests
       run: pytest tests --cov=app --cov-report=xml
