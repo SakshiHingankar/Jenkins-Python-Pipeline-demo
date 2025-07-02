@@ -3,8 +3,8 @@ on:
   push:
 jobs:
   job1:
-   stratergy:
-     matric: 
+   strategy:
+     matrix: 
       python-version: [3.9,3.8]
    runs-on: ubuntu-latest
    steps: 
