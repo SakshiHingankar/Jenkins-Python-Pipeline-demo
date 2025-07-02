@@ -1,21 +1,26 @@
 name: python workflow
 on:
- push:
+  push:
 jobs:
   job1:
+   stratergy:
+     matric: 
+      python-version: [3.9,3.8]
    runs-on: ubuntu-latest
-   steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Setup python 3.9
-      uses: actions/setup-python@v5
-      with:
-       python-version: '3.9'
-    - name: Install dependencies
-      run: |
+   steps: 
+    - name: checkout code
+      uses: action/heckout@v4
+    - name: setup python 3.6
+      uses: action/checkout@v5
+      with: 
+       python-version: ${{ matrix.python-version}}
+    - name: install dependencies
+      run: 
         pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Set pythonPath
+    - name: set pythonpath
       run: echo "PYTHONPATH"=$GITHUB_WORKSPACE >> $GITHUB_ENV
-    - name: Run tests
+    - name: python link
+      run: flake8 app.py tests/
+    - name: Run tests/
       run: pytest tests --cov=app --cov-report=xml
